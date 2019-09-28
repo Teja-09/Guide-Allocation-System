@@ -7,6 +7,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
     <style>
+          input
+        {
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+        }
     * {
     padding: 0;
     margin: 0;
@@ -471,8 +480,8 @@
       <div class="heading">
         <img src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
         <div class="info">
-          <h3><a href="#">Admin</a></h3>
-          <p>Hey Welome</p>
+          <h3><a href="#">Faculty</a></h3>
+          <p>Helo <%= name %></p>
         </div>
       </div>
       <ul class="categories">
@@ -484,11 +493,6 @@
             <li><a href="#">Krishna Teja</a></li>
           </ul>
         </li>
-        <li><i class="fa fa-envelope fa-fw"></i><a href="#"> Contact us</a>
-          <ul class="side-nav-dropdown">
-            <li><a href="#">Admin</a></li>
-          </ul>
-        </li>
         <li><i class="fa fa-users fa-fw"></i><a href="#"> Our team</a>
           <ul class="side-nav-dropdown">
             <li><a href="#">Dhanush G A</a></li>
@@ -497,14 +501,8 @@
             <li><a href="#">Krishna Teja</a></li>
           </ul>
         </li>
-        <li><i class="fa fa-bolt fa-fw"></i><a href="#"> Testimonials</a>
-          <ul class="side-nav-dropdown">
-            <li><a href="#">Lorem ipsum</a></li>
-            <li><a href="#">ipsum dolor</a></li>
-            <li><a href="#">dolor ipsum</a></li>
-            <li><a href="#">amet consectetur</a></li>
-            <li><a href="#">ipsum dolor sit</a></li>
-          </ul>
+        <li><form action="http://localhost:8000/faculty_update" method="POST">
+            <input type="submit" value="Update Details"></form>
         </li>
     </aside>
     <section id="contents">
@@ -535,8 +533,8 @@
           <div class="row">
             <div class="col-md-12">
               <div class="content">
-                <h2>Welcome to Admin</h2>
-                <p>This is the Admin Dashboard for Project Management System.</p>
+                <h2>Welcome <%= name %></h2>
+                <p>This is the Faculty Dashboard for managing Projects.</p>
               </div>
             </div>
           </div>
@@ -549,8 +547,8 @@
               <div class="box">
                 <i class="fa fa-envelope fa-fw bg-primary"></i>
                 <div class="info">
-                  <h3>1,245</h3> <span>Emails</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                  <span><h3>UID</h3></span>
+                  <p><%= uid %></p>
                 </div>
               </div>
             </div>
@@ -558,8 +556,8 @@
               <div class="box">
                 <i class="fa fa-file fa-fw danger"></i>
                 <div class="info">
-                  <h3>34</h3> <span>Projects</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                   <span><h3>No of projects</h3></span>
+                  <p><%= noofprojects %></p>
                 </div>
               </div>
             </div>
@@ -567,8 +565,8 @@
               <div class="box">
                 <i class="fa fa-users fa-fw success"></i>
                 <div class="info">
-                  <h3>5,245</h3> <span>Users</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                  <span><h3>Years of experience</h3></span>
+                  <p><%= experience %></p>
                 </div>
               </div>
             </div>

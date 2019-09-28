@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Assignment</title>
+    <style>
+    #main
+    {
+        width: 600px;
+        height: auto;
+        padding-left: 40px;
+        margin: 0 auto; 
+        border-style: dotted;
+        border-color: greenyellow;
+        padding: 2% 2% 2.3%;
+        margin-top: 20px;
+    }
+
+    h1
+    {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #main input
+    {
+        margin-bottom: 8px;
+    }
+
+    hr{
+        width:550px ;
+        margin-right: 50px;
+        border-style: dotted;
+        border-color: blue;
+    }
+    #main #addressinput,#city,#state,#zip
+    {
+        padding-left: 10px;
+        width: 80%;
+        border: none; /* <-- This thing here */
+        border:solid 1px #ccc;
+        border-radius: 4px;
+    }
+
+    #address
+    {
+        color: lightgreen;
+    }
+
+    small
+    {
+        font-size: 15px;
+    }
+
+    #main #table2 #home-type
+    {
+        margin-right: 250px;
+    }
+
+    #main #table2 select
+    {
+        width: 200px;
+        border: none; /* <-- This thing here */
+        border:solid 1px #ccc;
+        border-radius: 4px;
+    }
+
+    #main #table3 label,select{
+        margin-right: 40px;
+        /* margin-left: 5px; */
+    }
+
+    button
+    {
+        margin-top: 25px;
+        width: 500px;
+        color: red;
+    }
+
+    #datah1
+    {
+        margin-top: 70px;
+        margin-left: 40%;
+    }
+    #datatable
+    {
+        border-spacing: 35px;
+        border-collapse: separate;
+    }
+    #datatable th{
+        padding: 10px;
+    }
+
+    #dataentered
+    {
+        margin: 0 auto;
+    }
+</style>
+</head>
+<body>
+    <div id="main">
+        <h1>Update your details here.</h1>
+        <h2>Tell us your other details.</h2>
+        <br>
+        <form action="http://localhost:8000/student_signup" method="POST">
+            <label><b>User name</b></label><br>
+            <input type="text" id="addressinput" class="in" placeholder="User Name" name="uname" value=""><br>
+            <label><b>Full Name</b></label><br>
+            <input type="text" id="addressinput" class="in" placeholder="Name" name="name"><br>
+            <br>
+            <table id="table1">
+                <tr>
+                    <th>
+                        <b>year of join</b>  
+                    </th>
+                    <th>
+                        <b>Mobile Number</b>
+                    </th>
+                    <th>
+                       <b>degree</b>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" placeholder="year of join" class="in" id="city" name="yearofjoin">
+                    </td>
+                    <td>
+                        <input type="text" placeholder="mobile" class="in" id="state" name="phoneno">
+                    </td>
+                    <td>
+                        <input type="text" placeholder="degree" class="in" id="state" name="Degree">
+                    </td>
+                </tr>
+            </table>
+            <hr>
+            <table id="table1">
+                    <tr>
+                        <th>
+                            <b>Department</b>  
+                        </th>
+                        <th>
+                            <b>Skill Set</b>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" placeholder="Department" class="in" id="city" name="department">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="skillset" class="in" id="state" name="Skillset">
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <input  type="submit" id="button" value="Sign me Up!!">
+            </form>
+    </div>
+</body>
+</html>

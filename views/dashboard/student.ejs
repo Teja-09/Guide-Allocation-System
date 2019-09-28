@@ -16,6 +16,15 @@
     font-family: 'Droid Sans', sans-serif;
     outline: none;
   }
+  input
+        {
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+        }
   ::-webkit-scrollbar {
     background: transparent;
     width: 5px;
@@ -471,24 +480,24 @@
       <div class="heading">
         <img src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
         <div class="info">
-          <h3><a href="#">Admin</a></h3>
-          <p>Hey Welome</p>
+          <h3><a href="#">Student</a></h3>
+          <p>Hey <%= username %></p>
         </div>
       </div>
       <ul class="categories">
-        <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a href="#"> About us</a>
+        <!-- <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a href="#"> About us</a>
           <ul class="side-nav-dropdown">
             <li><a href="#">Dhanush G A</a></li>
             <li><a href="#">Sree Sadhan</a></li>
             <li><a href="#">Prabakaran</a></li>
             <li><a href="#">Krishna Teja</a></li>
           </ul>
-        </li>
-        <li><i class="fa fa-envelope fa-fw"></i><a href="#"> Contact us</a>
+        </li> -->
+        <!-- <li><i class="fa fa-envelope fa-fw"></i><a href="#"> Contact us</a>
           <ul class="side-nav-dropdown">
             <li><a href="#">Admin</a></li>
           </ul>
-        </li>
+        </li> -->
         <li><i class="fa fa-users fa-fw"></i><a href="#"> Our team</a>
           <ul class="side-nav-dropdown">
             <li><a href="#">Dhanush G A</a></li>
@@ -497,14 +506,8 @@
             <li><a href="#">Krishna Teja</a></li>
           </ul>
         </li>
-        <li><i class="fa fa-bolt fa-fw"></i><a href="#"> Testimonials</a>
-          <ul class="side-nav-dropdown">
-            <li><a href="#">Lorem ipsum</a></li>
-            <li><a href="#">ipsum dolor</a></li>
-            <li><a href="#">dolor ipsum</a></li>
-            <li><a href="#">amet consectetur</a></li>
-            <li><a href="#">ipsum dolor sit</a></li>
-          </ul>
+        <li><form action="http://localhost:8000/student_update" method="POST">
+            <input type="submit" value="Update Details"></form>
         </li>
     </aside>
     <section id="contents">
@@ -535,8 +538,8 @@
           <div class="row">
             <div class="col-md-12">
               <div class="content">
-                <h2>Welcome to Admin</h2>
-                <p>This is the Admin Dashboard for Project Management System.</p>
+                <h2>Welcome <%= username %></h2>
+                <p>This is the your Dashboard for managing your project.</p>
               </div>
             </div>
           </div>
@@ -549,8 +552,8 @@
               <div class="box">
                 <i class="fa fa-envelope fa-fw bg-primary"></i>
                 <div class="info">
-                  <h3>1,245</h3> <span>Emails</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                <span><h3><%= username %></h3></span>
+                  <p><%= roll %></p>
                 </div>
               </div>
             </div>
@@ -558,8 +561,8 @@
               <div class="box">
                 <i class="fa fa-file fa-fw danger"></i>
                 <div class="info">
-                  <h3>34</h3> <span>Projects</span>
-                  <p>Lorem ipsum dolor sit amet</p>
+                  <span><h3>skillset :</h3></span>
+                  <p><%= skillset %></p>
                 </div>
               </div>
             </div>
@@ -567,7 +570,7 @@
               <div class="box">
                 <i class="fa fa-users fa-fw success"></i>
                 <div class="info">
-                  <h3>5,245</h3> <span>Users</span>
+                <span><h3>Project : </h3></span>
                   <p>Lorem ipsum dolor sit amet</p>
                 </div>
               </div>
@@ -575,7 +578,7 @@
           </div>
         </div>
       </section>
-      <section class="charts">
+      <!-- <section class="charts">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
@@ -592,13 +595,13 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <section class="admins">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
               <div class="box">
-                <h3>Admins:</h3>
+                <h3>Teammates:</h3>
                 <div class="admin">
                   <div class="img">
                     <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148906966/small/1501685402/enhance" alt="admin">
@@ -626,15 +629,6 @@
                     <p>Lorem ipsum dolor sit amet.</p>
                   </div>
                 </div>
-                <div class="admin">
-                    <div class="img">
-                      <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance" alt="admin">
-                    </div>
-                    <div class="info">
-                      <h3>Teja</h3>
-                      <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
-                  </div>
               </div>
             </div>
             <div class="col-md-6">

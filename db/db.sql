@@ -19,6 +19,7 @@ DELETE FROM accounts;
 
 select * from accounts;
 select * from students;
+select * from faculties;
 select uid from accounts where username='teja' and password = '1234';
 
 -- drop table accounts;

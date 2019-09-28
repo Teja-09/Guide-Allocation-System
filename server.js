@@ -5,6 +5,8 @@ app.use(express.urlencoded());
 
 var mysql = require('mysql');
 
+app.set('view engine', 'ejs');
+
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/views/index.html')
   })
@@ -12,9 +14,9 @@ app.get('/', function (req, res) {
 var connection = mysql.createConnection({
     host     : "localhost",
     user     : "root",
-    password : "",
+    password : "1234",
     port     : "3306",
-    database : ""
+    database : "guideme2_0"
   });
 
   connection.connect(function(err) {
@@ -50,34 +52,30 @@ app.post('/signup',function(req,res){
     var qualification = null;
     var yearsofexp = 0, noofprojects = 0;
 
-    // console.log(student);
-
     var sql = "INSERT INTO accounts (name, username, password, yearofjoin, phoneno, emailid) VALUES ('"+name+"','"+uname+"','"+pass+"','"+yearofjoin+"','"+phoneno+"','"+email+"')";
     connection.query(sql, function (err, result) 
     {
         if (err) throw err;
         console.log("INserted into accounts table.");
-        res.sendFile(__dirname + '/views/index.html');
     }); 
 
     var uid = 0;
     connection.query('SELECT UID FROM accounts WHERE username = ? AND password = ?', [uname, pass], function (err, result) {
         if (err) throw err;
         uid = JSON.stringify(result[0].UID);
-      });
+    });
  
     if(rollno != null && student!=undefined)
     {
         setTimeout(function() 
         {
-
-                connection.query("INSERT INTO students (UID, rollno, skillset, department, degree) VALUES ('"+uid+"','"+rollno+"','"+skillset+"','"+department+"','"+degree+"')", function (err, result) 
-                {
-                    if (err) throw err;
-                    console.log("Inserted into students table");
-                    console.log("uid = " + uid);
-                }); 
-
+            connection.query("INSERT INTO students (UID, rollno, skillset, department, degree) VALUES ('"+uid+"','"+rollno+"','"+skillset+"','"+department+"','"+degree+"')", function (err, result) 
+            {
+                if (err) throw err;
+                console.log("Inserted into students table");
+                console.log("uid = " + uid);
+                res.render(__dirname+'/views/ejs/stu_index.ejs',{uname:uname});
+            }); 
         }, 500);
     }
     
@@ -90,6 +88,7 @@ app.post('/signup',function(req,res){
                 if (err) throw err;
                 console.log("Inserted into faculties table");
                 console.log("uid = " + uid);
+                res.render(__dirname+'/views/ejs/fac_index.ejs',{uname:uname, uid:uid});
             }); 
             
         }, 500);
@@ -99,4 +98,86 @@ app.post('/signup',function(req,res){
 
 // ========================================================================================
 
+    //STUDENT SIGNUP
+app.post('/student_signup',function(req,res)
+{
+    var uname = req.body.uname;
+    var name = req.body.name;
+    var yearofjoin = req.body.yearofjoin;
+    var phoneno = req.body.phoneno;
+    var degree = req.body.Degree;
+    var department = req.body.department;
+    var skillset = req.body.Skillset;
+    var link = __dirname+'/views/update/student.html';
+
+    var sql = "UPDATE accounts SET name = '"+name+"', yearofjoin = '"+yearofjoin+"', phoneno = '"+phoneno+"' where username = '"+uname+"'";
+    connection.query(sql, function (err, result) 
+    {
+        if (err) throw err;
+        console.log("accounts table updated.");
+    }); 
+
+    var uid = 0;
+    var rollno = null;
+    connection.query('SELECT UID FROM accounts WHERE username = ?', [uname], function (err, result) {
+        if (err) throw err;
+        uid = JSON.stringify(result[0].UID);
+        console.log("uid = " + uid)
+
+        var sql2 = "UPDATE students SET skillset = '"+skillset+"', department = '"+department+"', degree = '"+degree+"' where UID = '"+uid+"'";
+        connection.query(sql2, function (err, result) 
+        {
+            if (err) throw err;
+            console.log("students table updated");
+            connection.query('SELECT rollno FROM students WHERE UID = ?', [uid], function (err, result) 
+            {
+                if (err) throw err;
+                rollno = result[0].rollno;
+                // rendering the student dashboard.
+                res.render(__dirname+'/views/dashboard/student.ejs' ,{username: uname, roll: rollno, skillset:skillset, link:link});
+        }); 
+        }); 
+    });
+});
+
+// =====================================================================================================
+
+    // FACULTY SIGNUP.
+app.post('/faculty_signup',function(req,res)
+{
+    var uid = req.body.uid;
+    var name = req.body.name;
+    var yearofjoin = req.body.yearofjoin;
+    var phoneno = req.body.phoneno;
+    var qualification = req.body.qualification;
+    var experience = req.body.experience;
+    var noofprojects = req.body.noofprojects;
+
+    var sql = "UPDATE accounts SET name = '"+name+"', yearofjoin = '"+yearofjoin+"', phoneno = '"+phoneno+"' where UID = '"+uid+"'";
+    connection.query(sql, function (err, result) 
+    {
+        if (err) throw err;
+        console.log("accounts table updated.");
+    }); 
+
+    var sql2 = "UPDATE faculties SET qualification = '"+qualification+"', yearsofexp = '"+experience+"', noofprojects = '"+noofprojects+"' where UID = '"+uid+"'";
+    connection.query(sql2, function (err, result) 
+    {
+        if (err) throw err;
+        console.log("faculties table updated");
+        res.render(__dirname+'/views/dashboard/faculty.ejs' ,{uid: uid, name:name, noofprojects:noofprojects, experience:experience});
+        // res.render(__dirname+'/views/dashboard')
+    }); 
+});
+
+
+app.post('/student_update',function(req,res)
+{
+    res.sendFile(__dirname+'/views/update/student.html');
+});
+
+app.post('/faculty_update',function(req,res)
+{
+    res.sendFile(__dirname+'/views/update/faculty.html');
+})
 app.listen(8000);
