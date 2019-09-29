@@ -20,9 +20,9 @@ var sesval;
 var connection = mysql.createConnection({
     host     : "localhost",
     user     : "root",
-    password : "1234",
+    password : "",
     port     : "3306",
-    database : "guideme2_0"
+    database : ""
 });
 
 connection.connect(function(err) {
