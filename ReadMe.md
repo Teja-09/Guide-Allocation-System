@@ -47,4 +47,4 @@ All the queries for tables are given in tables.txt file. Just copy them into mys
 ### Bug has been spotted in Login, as it just goes to student dashboard for now. It will be made generic.
 
 
-# **Rest of the team members, My work will be done shortly. I have spend hell lot of time on this and no longer wants to. Finish you work and integrate it with this. I am done.**
+# **Rest of the team members, My work will be done shortly. I have spend hell lot of time on this and no longer wants to. Finish your work and integrate it with this. I am done.**
