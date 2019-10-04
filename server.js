@@ -2,10 +2,9 @@ var express = require('express');
 var app = express();
 
 app.use(express.urlencoded());
-
 var mysql = require('mysql');
-
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/views'));
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/views/index.html')
@@ -14,9 +13,9 @@ app.get('/', function (req, res) {
 var connection = mysql.createConnection({
     host     : "localhost",
     user     : "root",
-    password : "",
+    password : "1234",
     port     : "3306",
-    database : ""
+    database : "guideme2_0"
   });
 
   connection.connect(function(err) {
@@ -74,6 +73,7 @@ app.post('/signup',function(req,res){
                 if (err) throw err;
                 console.log("Inserted into students table");
                 console.log("uid = " + uid);
+                // Second form for student signup
                 res.render(__dirname+'/views/ejs/stu_index.ejs',{uname:uname});
             }); 
         }, 500);
@@ -88,6 +88,7 @@ app.post('/signup',function(req,res){
                 if (err) throw err;
                 console.log("Inserted into faculties table");
                 console.log("uid = " + uid);
+                // Second form for faculty signup
                 res.render(__dirname+'/views/ejs/fac_index.ejs',{uname:uname, uid:uid});
             }); 
             
@@ -119,9 +120,11 @@ app.post('/student_signup',function(req,res)
 
     var uid = 0;
     var rollno = null;
-    connection.query('SELECT UID FROM accounts WHERE username = ?', [uname], function (err, result) {
+    var name = null;
+    connection.query('SELECT UID,name FROM accounts WHERE username = ?', [uname], function (err, result) {
         if (err) throw err;
         uid = JSON.stringify(result[0].UID);
+        name = result[0].name;
         console.log("uid = " + uid)
 
         var sql2 = "UPDATE students SET skillset = '"+skillset+"', department = '"+department+"', degree = '"+degree+"' where UID = '"+uid+"'";
@@ -134,7 +137,7 @@ app.post('/student_signup',function(req,res)
                 if (err) throw err;
                 rollno = result[0].rollno;
                 // rendering the student dashboard.
-                res.render(__dirname+'/views/dashboard/student.ejs' ,{username: uname, roll: rollno, skillset:skillset, link:link});
+                res.render(__dirname+'/views/dashboard/student.ejs' ,{username: uname, name: name, roll: rollno, skillset:skillset, link:link});
         }); 
         }); 
     });
@@ -166,7 +169,6 @@ app.post('/faculty_signup',function(req,res)
         if (err) throw err;
         console.log("faculties table updated");
         res.render(__dirname+'/views/dashboard/faculty.ejs' ,{uid: uid, name:name, noofprojects:noofprojects, experience:experience});
-        // res.render(__dirname+'/views/dashboard')
     }); 
 });
 

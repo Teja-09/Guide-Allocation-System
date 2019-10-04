@@ -478,32 +478,25 @@
     <aside class="side-nav" id="show-side-navigation1">
       <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
       <div class="heading">
-        <img src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="">
+        <!-- <img src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt=""> -->
         <div class="info">
-          <h3><a href="#">Faculty</a></h3>
-          <p>Helo <%= name %></p>
+          <h3>Faculty</h3>
+          <br>
+          <h5><%= name %></h5>
         </div>
       </div>
       <ul class="categories">
-        <li><i class="fa fa-home fa-fw" aria-hidden="true"></i><a href="#"> About us</a>
-          <ul class="side-nav-dropdown">
-            <li><a href="#">Dhanush G A</a></li>
-            <li><a href="#">Sree Sadhan</a></li>
-            <li><a href="#">Prabakaran</a></li>
-            <li><a href="#">Krishna Teja</a></li>
-          </ul>
-        </li>
-        <li><i class="fa fa-users fa-fw"></i><a href="#"> Our team</a>
-          <ul class="side-nav-dropdown">
-            <li><a href="#">Dhanush G A</a></li>
-            <li><a href="#">Sree Sadhan</a></li>
-            <li><a href="#">Prabakaran</a></li>
-            <li><a href="#">Krishna Teja</a></li>
-          </ul>
-        </li>
         <li><form action="http://localhost:8000/faculty_update" method="POST">
             <input type="submit" value="Update Details"></form>
         </li>
+        <li><i class="fa fa-users fa-fw"></i><a href="#"> Developers</a>
+            <ul class="side-nav-dropdown">
+              <li><a href="#">Dhanush G A</a></li>
+              <li><a href="#">Sree Sadhan</a></li>
+              <li><a href="#">Prabakaran</a></li>
+              <li><a href="#">Krishna Teja</a></li>
+            </ul>
+          </li>
     </aside>
     <section id="contents">
       <nav class="navbar navbar-default">
@@ -517,11 +510,7 @@
           <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My profile <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li role="separator" class="divider"></li>
-                  <li><a href="../" id="logout"><i class="fa fa-sign-out"></i> Log out</a></li>
-                </ul>
+                    <a href="../" id="logout"><i class="fa fa-sign-out"></i> Log out</a>                
               </li>&nbsp;&nbsp;
               <li><a href="#"><i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i></a></li>
             </ul>
@@ -545,52 +534,35 @@
           <div class="row">
             <div class="col-md-4">
               <div class="box">
-                <i class="fa fa-envelope fa-fw bg-primary"></i>
+                <!-- <i class="fa fa-envelope fa-fw bg-primary"></i> -->
                 <div class="info">
-                  <span><h3>UID</h3></span>
-                  <p><%= uid %></p>
+                  <span><h3>UID : <%= uid %></h3></span>
+                  <!-- <p></p> -->
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="box">
-                <i class="fa fa-file fa-fw danger"></i>
+                <!-- <i class="fa fa-file fa-fw danger"></i> -->
                 <div class="info">
-                   <span><h3>No of projects</h3></span>
-                  <p><%= noofprojects %></p>
+                   <span><h3>No of projects: <%= noofprojects %></h3></span>
+                  <!-- <p></p> -->
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="box">
-                <i class="fa fa-users fa-fw success"></i>
+                <!-- <i class="fa fa-users fa-fw success"></i> -->
                 <div class="info">
-                  <span><h3>Years of experience</h3></span>
-                  <p><%= experience %></p>
+                  <span><h3>Years of experience: <%= experience %></h3></span>
+                  <p></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="charts">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="chart-container">
-                <h3>Chart</h3>
-                <canvas id="myChart"></canvas>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="chart-container">
-                <h3>Chart2</h3>
-                <canvas id="myChart2"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
       <section class="admins">
         <div class="container-fluid">
           <div class="row">
@@ -599,7 +571,7 @@
                 <h3>Admins:</h3>
                 <div class="admin">
                   <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148906966/small/1501685402/enhance" alt="admin">
+                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148906966/small/1501685402/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
                     <h3>GAD</h3>
@@ -608,7 +580,7 @@
                 </div>
                 <div class="admin">
                   <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907137/small/1501685404/enhance" alt="admin">
+                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907137/small/1501685404/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
                     <h3>Sadhan</h3>
@@ -617,22 +589,14 @@
                 </div>
                 <div class="admin">
                    <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance" alt="admin">
+                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
                     <h3>Karan</h3>
                     <p>Lorem ipsum dolor sit amet.</p>
                   </div>
                 </div>
-                <div class="admin">
-                    <div class="img">
-                      <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance" alt="admin">
-                    </div>
-                    <div class="info">
-                      <h3>Teja</h3>
-                      <p>Lorem ipsum dolor sit amet.</p>
-                    </div>
-                  </div>
+
               </div>
             </div>
             <div class="col-md-6">
@@ -640,7 +604,7 @@
                 <h3>Mentors:</h3>
                 <div class="admin">
                   <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907114/small/1501685404/enhance" alt="admin">
+                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907114/small/1501685404/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
                     <h3>Joge Lucky</h3>
@@ -649,7 +613,7 @@
                 </div>
                 <div class="admin">
                   <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907086/small/1501685404/enhance" alt="admin">
+                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907086/small/1501685404/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
                     <h3>Joge Lucky</h3>
@@ -658,7 +622,7 @@
                 </div>
                 <div class="admin">
                   <div class="img">
-                    <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="admin">
+                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
                     <h3>Joge Lucky</h3>

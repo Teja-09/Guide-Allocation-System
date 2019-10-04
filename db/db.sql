@@ -9,18 +9,6 @@ create table accounts (
     phoneno numeric(10, 0),
     emailid varchar(40) unique
 ); 
-ALTER TABLE accounts MODIFY COLUMN UID INT auto_increment;
-
-insert into accounts(name, username, password, yearofjoin, phoneno, emailid) values (null,'sadhan', '1234', 0, 0, 'sadhan@gmail.com');
-
-select password from accounts where emailid = 'ram@gmail.com';
-
-DELETE FROM accounts;
-
-select * from accounts;
-select * from students;
-select * from faculties;
-select uid from accounts where username='teja' and password = '1234';
 
 -- drop table accounts;
 -- drop table students; 

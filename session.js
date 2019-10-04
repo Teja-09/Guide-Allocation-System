@@ -20,9 +20,9 @@ var sesval;
 var connection = mysql.createConnection({
     host     : "localhost",
     user     : "root",
-    password : "",
+    password : "1234",
     port     : "3306",
-    database : ""
+    database : "guideme2_0"
 });
 
 connection.connect(function(err) {
@@ -43,9 +43,11 @@ router.post('/login',(req,res) => {
     var pass = req.body.password;
     var flag = null;
 
-    connection.query('SELECT * FROM accounts WHERE emailid = ? AND password = ?', [email, pass], function (err, result) {
+
+    // var uid = 0, uname = null, roll= null, skillset = null;
+    connection.query('SELECT UID FROM accounts WHERE emailid = ? AND password = ?', [email, pass], function (err, result) {
         if (err) throw err;
-        console.log("results  = " + result);
+        // console.log("results  = " + result);
         if(result != '')
         {
             flag = 1;
@@ -58,25 +60,42 @@ router.post('/login',(req,res) => {
 
         if(flag == 1)
         {
-            var uname = null;
-            var uid = 0;
-            var roll = null;
-            connection.query('SELECT UID, username FROM accounts WHERE emailid = ?', [email], function (err, result) 
+            // Student login values
+            var uid = 0, name = null, roll= null, skillset = null,username = null;
+
+            // faculty
+            noofprojects = 0, yrsofexp = 0;
+            connection.query('SELECT UID,name,username FROM accounts WHERE emailid = ?', [email], function (err, result) 
             {
                 if (err) throw err;
-                uname = result[0].username;
                 uid = result[0].UID;
-                console.log("uname is = " + uname);
-                console.log("uname is = " + uid);
+                name = result[0].name;
+                username = result[0].username;
+                console.log("uid is = " + uid);
+                console.log("name is = " + name);
 
-
-                // Getting roll number from students table
-                connection.query('SELECT rollno FROM students WHERE UID = ?', [uid], function (err, result) 
+                connection.query('SELECT rollno,skillset FROM students WHERE UID = ?', [uid], function (err, result) 
                 {
-                    if (err) throw err;
-                    roll = result[0].rollno;
-                    console.log("roll is = " + roll);
-                    res.render(__dirname + '/views/dashboard/student.ejs', {username: uname, roll: roll})
+                    if(result != '')
+                    {
+                        if (err) throw err;
+                        roll = result[0].rollno;
+                        skillset = result[0].skillset;
+                        console.log("roll is = " + roll);
+                        console.log("skillset  is = " + skillset);
+                        res.render(__dirname + '/views/dashboard/student.ejs', {username: username,name: name, roll: roll, skillset:skillset})
+                    }
+                    else
+                    {
+                        connection.query('select noofprojects,yearsofexp from faculties where UID = ? ',[uid], function(err,result)
+                        {
+                            noofprojects = result[0].noofprojects;
+                            yrsofexp = result[0].yearsofexp;
+                            console.log("noof projects " + noofprojects);
+                            console.log("yrso of exp  " + yrsofexp);
+                            res.render(__dirname + '/views/dashboard/faculty.ejs', {uid:uid ,name: name, noofprojects: noofprojects, experience:yrsofexp})
+                        })
+                    }
                 });
             });
 
