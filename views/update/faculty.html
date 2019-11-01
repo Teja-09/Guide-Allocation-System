@@ -102,19 +102,16 @@
 <body>
     <div id="main">
         <h1>Update your details here.</h1>
-        <h2>Tell us your other details.</h2>
+        <h2>Tell us your details.</h2>
         <br>
         <form action="http://localhost:8000/faculty_signup" method="POST">
             <label><b>User ID</b></label><br>
-            <input type="text" id="addressinput" class="in" placeholder="Get UID from your profile" name="uid" value=""><br>
+            <input type="text" id="addressinput" class="in" placeholder="Get user id from profile" name="uid" value=""><br>
             <label><b>Full Name</b></label><br>
             <input type="text" id="addressinput" class="in" placeholder="Name" name="name"><br>
             <br>
             <table id="table1">
                 <tr>
-                    <th>
-                        <b>year of join</b>  
-                    </th>
                     <th>
                         <b>Mobile Number</b>
                     </th>
@@ -123,9 +120,6 @@
                     </th>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="text" placeholder="year of join" class="in" id="city" name="yearofjoin">
-                    </td>
                     <td>
                         <input type="text" placeholder="mobile" class="in" id="state" name="phoneno">
                     </td>
@@ -141,7 +135,7 @@
                             <b>Years of experience</b>  
                         </th>
                         <th>
-                            <b>No.of Projects</b>
+                            <b>Skillset</b>
                         </th>
                     </tr>
                     <tr>
@@ -149,7 +143,7 @@
                             <input type="text" placeholder="experience" class="in" id="city" name="experience">
                         </td>
                         <td>
-                            <input type="text" placeholder="projects" class="in" id="state" name="noofprojects">
+                            <input type="text" placeholder="Skills" class="in" id="state" name="skillset">
                         </td>
                     </tr>
                 </table>

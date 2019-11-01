@@ -103,7 +103,7 @@
 <body>
     <div id="main">
         <h1>Update your details here.</h1>
-        <h2>Tell us your other details.</h2>
+        <h2>Tell us your details.</h2>
         <br>
         <form action="http://localhost:8000/student_signup" method="POST">
             <label><b>User name</b></label><br>
@@ -114,9 +114,6 @@
             <table id="table1">
                 <tr>
                     <th>
-                        <b>year of join</b>  
-                    </th>
-                    <th>
                         <b>Mobile Number</b>
                     </th>
                     <th>
@@ -124,9 +121,6 @@
                     </th>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="text" placeholder="year of join" class="in" id="city" name="yearofjoin">
-                    </td>
                     <td>
                         <input type="text" placeholder="mobile" class="in" id="state" name="phoneno">
                     </td>
@@ -144,6 +138,9 @@
                         <th>
                             <b>Skill Set</b>
                         </th>
+                        <th>
+                            <b>CGPA</b>
+                        </th>
                     </tr>
                     <tr>
                         <td>
@@ -151,6 +148,9 @@
                         </td>
                         <td>
                             <input type="text" placeholder="skillset" class="in" id="state" name="Skillset">
+                        </td>
+                        <td>
+                            <input type="text" placeholder="CGPA" class="in" id="state" name="cgpa">
                         </td>
                     </tr>
                 </table>

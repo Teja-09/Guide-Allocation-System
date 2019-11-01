@@ -568,57 +568,31 @@
           </div>
         </div>
       </section>
-      <!-- <section class="charts">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="chart-container">
-                <h3>Chart</h3>
-                <canvas id="myChart"></canvas>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="chart-container">
-                <h3>Chart2</h3>
-                <canvas id="myChart2"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> -->
       <section class="admins">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6">
               <div class="box">
                 <h3>Teammates:</h3>
-                <div class="admin">
+                <!-- <div class="admin">
                   <div class="img">
-                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148906966/small/1501685402/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
                     <h3>GAD</h3>
                     <p>Lorem ipsum dolor sit amet.</p>
                   </div>
-                </div>
+                </div> -->
+                <!-- <% if (teammates) { %> -->
+            <% for(var i=0; i < Object.keys(teammates).length-1; i++) { %>
                 <div class="admin">
-                  <div class="img">
-                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907137/small/1501685404/enhance" alt="admin"> -->
+                    <div class="img">
+                    </div>
+                    <div class="info">
+                      <h2><%= JSON.stringify(teammates[i]) %></h2>
+                    </div>
                   </div>
-                  <div class="info">
-                    <h3>Sadhan</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="admin">
-                   <div class="img">
-                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907019/small/1501685403/enhance" alt="admin"> -->
-                  </div>
-                  <div class="info">
-                    <h3>Karan</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
+                  <% } %>
+                  <!-- <% } %> -->
               </div>
             </div>
             <div class="col-md-6">
@@ -626,29 +600,9 @@
                 <h3>Mentors:</h3>
                 <div class="admin">
                   <div class="img">
-                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907114/small/1501685404/enhance" alt="admin"> -->
                   </div>
                   <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="admin">
-                  <div class="img">
-                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907086/small/1501685404/enhance" alt="admin"> -->
-                  </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </div>
-                </div>
-                <div class="admin">
-                  <div class="img">
-                    <!-- <img class="img-responsive" src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance" alt="admin"> -->
-                  </div>
-                  <div class="info">
-                    <h3>Joge Lucky</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <h2><%= JSON.stringify(teammates[4]) %></h2>
                   </div>
                 </div>
               </div>

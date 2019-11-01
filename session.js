@@ -22,7 +22,7 @@ var connection = mysql.createConnection({
     user     : "root",
     password : "1234",
     port     : "3306",
-    database : "guideme2_0"
+    database : "guideme_final"
 });
 
 connection.connect(function(err) {
@@ -74,7 +74,7 @@ router.post('/login',(req,res) => {
                 console.log("uid is = " + uid);
                 console.log("name is = " + name);
 
-                connection.query('SELECT rollno,skillset FROM students WHERE UID = ?', [uid], function (err, result) 
+                connection.query('SELECT rollno,skillset FROM students WHERE SID = ?', [uid], function (err, result) 
                 {
                     if(result != '')
                     {
@@ -83,22 +83,53 @@ router.post('/login',(req,res) => {
                         skillset = result[0].skillset;
                         console.log("roll is = " + roll);
                         console.log("skillset  is = " + skillset);
-                        res.render(__dirname + '/views/dashboard/student.ejs', {username: username,name: name, roll: roll, skillset:skillset})
+                        connection.query('select distinct accounts.usertype, accounts.name from worksUnder, accounts where accounts.UID in (select SID from worksUnder where FID = (select FID from worksUnder where SID = ?)) or accounts.UID in (select FID from worksUnder where SID = ?);',[uid ,uid],function(err,result)
+                        {
+                            let teammates = {}
+                            let count = 0;
+                            let k = 0;
+                            result.forEach(() => {
+                                if (result[`${count}`].usertype) {
+                                    teammates[`${k}`] = result[count].name;
+                                    k++;
+                                } else {
+                                    teammates['4'] = result[count].name;
+                                }
+                                count++;
+
+                            })
+                            console.log(JSON.stringify(teammates));
+                            res.render(__dirname + '/views/dashboard/student.ejs', {username: username,name: name, roll: roll, skillset:skillset, teammates: teammates})
+                        })
                     }
                     else
                     {
-                        connection.query('select noofprojects,yearsofexp from faculties where UID = ? ',[uid], function(err,result)
+                        connection.query('select skillset,yearsofexp from faculties where FID = ? ',[uid], function(err,result)
                         {
-                            noofprojects = result[0].noofprojects;
-                            yrsofexp = result[0].yearsofexp;
-                            console.log("noof projects " + noofprojects);
-                            console.log("yrso of exp  " + yrsofexp);
-                            res.render(__dirname + '/views/dashboard/faculty.ejs', {uid:uid ,name: name, noofprojects: noofprojects, experience:yrsofexp})
+                            if(result != '')
+                            {
+                                skillset = result[0].skillset;
+                                yrsofexp = result[0].yearsofexp;
+                                console.log("noof projects " + noofprojects);
+                                console.log("yrso of exp  " + yrsofexp);
+                                res.render(__dirname + '/views/dashboard/faculty.ejs', {uid:uid ,name: name, skillset: skillset, experience:yrsofexp})
+                            }
+                            else
+                            {
+                                connection.query('select usertype from accounts where UID = ?', [uid], function(err, result)
+                                {
+                                    if(result[0].usertype === 'A')
+                                    {
+                                        res.render(__dirname + '/views/dashboard/admin.ejs', {uid:uid ,name: name});
+
+                                    }
+                                });
+                            }
+                          
                         })
                     }
                 });
             });
-
         }
     });
 });
