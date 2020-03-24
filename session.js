@@ -18,11 +18,11 @@ var sess;
 var sesval;
 
 var connection = mysql.createConnection({
-    host     : "localhost",
-    user     : "root",
-    password : "1234",
-    port     : "3306",
-    database : "guideme_final"
+    host     : "",
+    user     : "",
+    password : "",
+    port     : "",
+    database : ""
 });
 
 connection.connect(function(err) {
