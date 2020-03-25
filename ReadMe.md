@@ -19,20 +19,20 @@ MySQL DB (https://www.mysql.com/downloads/)
 Clone the repository
 
 ```
-git clone https://github.com/Teja-09/Guide_Me.git
+$ git clone https://github.com/Teja-09/Guide_Me.git
 ```
 
 Install dependencies
 
 ```
-npm i
+$ npm i
 ```
 
 Start servers
 
 ```
-node server.js
-node session.js
+$ node server.js
+$ node session.js
 ```
 
 Run on browser
